@@ -9,7 +9,7 @@ spring:
     name: microservice-customer
   
   datasource:
-    url: ${DB_URL:jdbc:postgresql://localhost:5432/microservice-customer}
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/rdb-microservice-customer}
     username: ${DB_USERNAME:postgres}
     password: ${DB_PASSWORD:postgres}
     driver-class-name: org.postgresql.Driver
@@ -28,7 +28,12 @@ spring:
   config:
     import: "optional:consul:"
   cloud:
+    function:
+      autodetect: false
     stream:
+      function:
+        autodetect: false
+        definition: ""
       kafka:
         binder:
           brokers: ${KAFKA_BROKERS:localhost:19092}
